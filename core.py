@@ -124,8 +124,8 @@ def _install_platformio_core(shutdown_piohome=True, develop=False, ignore_python
         click.echo("Installing a development version of PlatformIO Core")
         command.append(PIO_CORE_DEVELOP_URL)
     else:
-        click.echo("Installing PlatformIO Core")
-        command.append("platformio")
+        click.echo("Installing PlatformIO Core ", develop)
+        command.append(PIO_CORE_DEVELOP_URL)
     try:
         print("Subproces Begins")
         subprocess.check_call(command)
