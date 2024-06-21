@@ -127,7 +127,9 @@ def _install_platformio_core(shutdown_piohome=True, develop=False, ignore_python
         click.echo("Installing PlatformIO Core")
         command.append("platformio")
     try:
+        print("Subproces Begins")
         subprocess.check_call(command)
+        print("Subproces ends")
     except Exception as e:  # pylint:disable=broad-except
         error = str(e)
         if util.IS_WINDOWS:
