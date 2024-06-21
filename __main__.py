@@ -11,6 +11,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+print("Installing Dependencies")
+subprocess.check_call([python_exe, "-m", "pip", "install", "click"])
 
 import logging
 import os
