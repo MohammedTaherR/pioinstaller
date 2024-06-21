@@ -29,7 +29,7 @@ from pioinstaller import __version__, exception, home, util
 
 log = logging.getLogger(__name__)
 
-PIO_CORE_DEVELOP_URL = "platformio.zip"
+PIO_CORE_DEVELOP_URL = "https://github.com/MohammedTaherR/pioinstaller/tree/ebb4194ffcac8b8736581b68d8a8c349401a5d77"
 UPDATE_INTERVAL = 60 * 60 * 24 * 3  # 3 days
 
 
