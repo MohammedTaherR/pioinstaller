@@ -119,6 +119,7 @@ def _install_platformio_core(shutdown_piohome=True, develop=False, ignore_python
     )
 
     click.echo("Installing PlatformIO Core into an isolated environment `%s`" % penv_dir)
+    develop = True
     if develop:
         click.echo("Installing a development version of PlatformIO Core")
         command.append(PIO_CORE_DEVELOP_URL)
