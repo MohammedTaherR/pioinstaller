@@ -103,6 +103,23 @@ def _install_platformio_core(shutdown_piohome=True, develop=False, ignore_python
         penv.get_penv_bin_dir(penv_dir), "python.exe" if util.IS_WINDOWS else "python"
     )
     command = [python_exe, "-m", "pip", "install", "-U"]
+    
+    command.append([python_exe, "-m", "pip", "install", "--upgrade", "pip", "wheel"])
+    command.append([python_exe, "-m", "pip", "install", "--upgrade", "pip", "click"])
+    command.append([python_exe, "-m", "pip", "install", "--upgrade", "pip", "colorama"])
+    command.append([python_exe, "-m", "pip", "install", "--upgrade", "pip", "idna"])
+    command.append([python_exe, "-m", "pip", "install", "--upgrade", "pip", "requests"])
+    command.append([python_exe, "-m", "pip", "install", "--upgrade", "pip", "idna"])
+    command.append(
+        [python_exe, "-m", "pip", "install", "--upgrade", "pip", "semantic_version"]
+    )
+    command.append([python_exe, "-m", "pip", "install", "--upgrade", "pip", "urllib3"])
+    command.append([python_exe, "-m", "pip", "install", "--upgrade", "pip", "certifi"])
+    command.append(
+        [python_exe, "-m", "pip", "install", "--upgrade", "pip", "charset_normalizer"]
+    )
+
+    click.echo("Installing PlatformIO Core into an isolated environment `%s`" % penv_dir)
     if develop:
         click.echo("Installing a development version of PlatformIO Core")
         command.append(PIO_CORE_DEVELOP_URL)
