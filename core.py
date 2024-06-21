@@ -13,6 +13,19 @@
 # limitations under the License.
 
 # pylint: disable=import-outside-toplevel
+print("Installing Dependencies")
+subprocess.check_call([python_exe, "-m", "pip", "install", "wheel"])
+subprocess.check_call([python_exe, "-m", "pip", "install", "click"])
+subprocess.check_call([python_exe, "-m", "pip", "install", "colorama"])
+subprocess.check_call([python_exe, "-m", "pip", "install", "idna"])
+subprocess.check_call([python_exe, "-m", "pip", "install", "requests"])
+subprocess.check_call(
+    [python_exe, "-m", "pip", "install", "semantic_version"]    )
+subprocess.check_call([python_exe, "-m", "pip", "install", "urllib3"])
+subprocess.check_call([python_exe, "-m", "pip", "install", "certifi"])
+subprocess.check_call(
+    [python_exe, "-m", "pip", "install", "charset_normalizer"]
+)
 
 import json
 import logging
