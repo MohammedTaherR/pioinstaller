@@ -48,7 +48,7 @@ def create_core_penv(penv_dir=None, ignore_pythons=None):
 
     click.echo("Creating a virtual environment at %s" % penv_dir)
     result_dir = None
-    print("Virtual Environment Created")
+
     for python_exe in python.find_compatible_pythons(ignore_pythons):
         result_dir = create_virtualenv(python_exe, penv_dir)
         if result_dir:

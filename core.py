@@ -103,7 +103,6 @@ def _install_platformio_core(shutdown_piohome=True, develop=False, ignore_python
         penv.get_penv_bin_dir(penv_dir), "python.exe" if util.IS_WINDOWS else "python"
     )
     command = [python_exe, "-m", "pip", "install", "-U"]
-    print("Installing the Core.py")
     click.echo("Installing PlatformIO Core into an isolated environment `%s`" % penv_dir)
     develop = True
     if develop:
@@ -113,9 +112,9 @@ def _install_platformio_core(shutdown_piohome=True, develop=False, ignore_python
         click.echo("Installing PlatformIO Core ", develop)
         command.append(PIO_CORE_DEVELOP_URL)
     try:
-        print("Subproces Begins")
+
         subprocess.check_call(command)
-        print("Subproces ends")
+
     except Exception as e:  # pylint:disable=broad-except
         error = str(e)
         if util.IS_WINDOWS:
@@ -222,11 +221,8 @@ def check(develop=False, global_=False, auto_upgrade=False, version_spec=None):
 
     return result
 
-subprocess.check_call(
-        ["python", "-m", "pip", "install", "semantic_version"]
-    )
-import semantic_version
-import click
+
+
 
 def _check_core_version(piocore_version, version_spec):
     try:

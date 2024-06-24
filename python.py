@@ -20,7 +20,7 @@ import platform
 import subprocess
 import sys
 import tempfile
-print("Installing Dependencies")
+
 import subprocess   
 
 import click
@@ -138,9 +138,9 @@ def check():
         )
 
     # conda check
-    click.secho("Checking for Conda Support")
+
     if is_conda():
-        print("Conda not supported")
+
         raise exception.IncompatiblePythonError("Conda not supported")
 
     try:
@@ -225,7 +225,7 @@ def find_compatible_pythons(
                     "check",
                     "python",
                 ],
-                
+                stderr=subprocess.STDOUT,
             )
             result.append(item)
             try:
