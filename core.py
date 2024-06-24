@@ -13,20 +13,6 @@
 # limitations under the License.
 
 # pylint: disable=import-outside-toplevel
-print("Installing Dependencies")
-subprocess.check_call([python_exe, "-m", "pip", "install", "wheel"])
-subprocess.check_call([python_exe, "-m", "pip", "install", "click"])
-subprocess.check_call([python_exe, "-m", "pip", "install", "colorama"])
-subprocess.check_call([python_exe, "-m", "pip", "install", "idna"])
-subprocess.check_call([python_exe, "-m", "pip", "install", "requests"])
-subprocess.check_call(
-    [python_exe, "-m", "pip", "install", "semantic_version"]    )
-subprocess.check_call([python_exe, "-m", "pip", "install", "urllib3"])
-subprocess.check_call([python_exe, "-m", "pip", "install", "certifi"])
-subprocess.check_call(
-    [python_exe, "-m", "pip", "install", "charset_normalizer"]
-)
-
 import json
 import logging
 import os
@@ -37,6 +23,7 @@ import time
 
 import click
 import semantic_version
+
 
 from pioinstaller import __version__, exception, home, util
 
@@ -116,21 +103,7 @@ def _install_platformio_core(shutdown_piohome=True, develop=False, ignore_python
         penv.get_penv_bin_dir(penv_dir), "python.exe" if util.IS_WINDOWS else "python"
     )
     command = [python_exe, "-m", "pip", "install", "-U"]
-  
-    subprocess.check_call([python_exe, "-m", "pip", "install", "wheel"])
-    subprocess.check_call([python_exe, "-m", "pip", "install", "click"])
-    subprocess.check_call([python_exe, "-m", "pip", "install", "colorama"])
-    subprocess.check_call([python_exe, "-m", "pip", "install", "idna"])
-    subprocess.check_call([python_exe, "-m", "pip", "install", "requests"])
-    subprocess.check_call(
-        [python_exe, "-m", "pip", "install", "semantic_version"]
-    )
-    subprocess.check_call([python_exe, "-m", "pip", "install", "urllib3"])
-    subprocess.check_call([python_exe, "-m", "pip", "install", "certifi"])
-    subprocess.check_call(
-        [python_exe, "-m", "pip", "install", "charset_normalizer"]
-    )
-
+    print("Installing the Core.py")
     click.echo("Installing PlatformIO Core into an isolated environment `%s`" % penv_dir)
     develop = True
     if develop:
@@ -249,6 +222,11 @@ def check(develop=False, global_=False, auto_upgrade=False, version_spec=None):
 
     return result
 
+subprocess.check_call(
+        ["python", "-m", "pip", "install", "semantic_version"]
+    )
+import semantic_version
+import click
 
 def _check_core_version(piocore_version, version_spec):
     try:

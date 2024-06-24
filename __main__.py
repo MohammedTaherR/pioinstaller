@@ -12,12 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 print("Installing Dependencies")
-subprocess.check_call([python_exe, "-m", "pip", "install", "click"])
+# import subprocess   
+# subprocess.check_call(["python", "-m", "pip", "install", "click"])
 
 import logging
 import os
 import platform
 import sys
+import subprocess   
 
 import click
 

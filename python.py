@@ -20,6 +20,8 @@ import platform
 import subprocess
 import sys
 import tempfile
+print("Installing Dependencies")
+import subprocess   
 
 import click
 import requests
@@ -36,6 +38,7 @@ def is_conda():
             os.path.exists(os.path.join(sys.prefix, "conda-meta")),
             # (os.getenv("CONDA_PREFIX") or os.getenv("CONDA_DEFAULT_ENV")),
             "anaconda" in sys.executable.lower(),
+            "miniconda3" in sys.executable.lower(),
             "miniconda" in sys.executable.lower(),
             "continuum analytics" in sys.version.lower(),
             "conda" in sys.version.lower(),
@@ -122,6 +125,7 @@ def is_version_system_compatible(version, systype):
 
 def check():
     # platform check
+    print("Checking for Python Support")
     if sys.platform == "cygwin":
         raise exception.IncompatiblePythonError("Unsupported Cygwin platform")
 
@@ -134,14 +138,18 @@ def check():
         )
 
     # conda check
+    click.secho("Checking for Conda Support")
     if is_conda():
-        raise exception.IncompatiblePythonError("Conda is not supported")
+        print("Conda not supported")
+        raise exception.IncompatiblePythonError("Conda not supported")
 
     try:
         __import__("ensurepip")
         __import__("venv")
+        
         # __import__("distutils.command")
     except ImportError:
+        click.secho("venv module not found")
         raise exception.PythonVenvModuleNotFound()
 
     # portable Python 3 for macOS is not compatible with macOS < 10.13
@@ -217,7 +225,7 @@ def find_compatible_pythons(
                     "check",
                     "python",
                 ],
-                stderr=subprocess.STDOUT,
+                
             )
             result.append(item)
             try:
